@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4aykkytgpvp7"]
+
+[ext_resource type="Texture2D" uid="uid://dvmrk6nj67x5l" path="res://assets/Cave - Floor.png" id="1_ba0x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(41, 12)
+
+[node name="platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CaveFloor" type="Sprite2D" parent="."]
+position = Vector2(339, 88.25)
+scale = Vector2(0.2876714, 0.21428564)
+texture = ExtResource("1_ba0x2")
+region_enabled = true
+region_rect = Rect2(957, 77, 146, 63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(338.5, 88)
+shape = SubResource("RectangleShape2D_nlgqw")
+one_way_collision = true

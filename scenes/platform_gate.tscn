@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfil0sx1dt4d6"]
+
+[ext_resource type="Texture2D" uid="uid://cj8uh17lijdsk" path="res://assets/CaveBG.png" id="1_p2km0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2km0"]
+size = Vector2(30, 64)
+
+[node name="platform gate" type="AnimatableBody2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CaveBg" type="Sprite2D" parent="."]
+position = Vector2(1, -3)
+texture = ExtResource("1_p2km0")
+region_enabled = true
+region_rect = Rect2(160, 415, 32, 66)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_p2km0")

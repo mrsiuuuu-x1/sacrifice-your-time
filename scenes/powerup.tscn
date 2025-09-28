@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmtsxp0flnymc"]
+
+[ext_resource type="Texture2D" uid="uid://gsjo5ucr8sq8" path="res://assets/Cave - SmallRocks.png" id="1_8vsy1"]
+[ext_resource type="PackedScene" uid="uid://gni3tryx7nil" path="res://scenes/killzone.tscn" id="2_ih772"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ih772"]
+size = Vector2(149, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_406cw"]
+size = Vector2(133, 11)
+
+[node name="powerup" type="Area2D"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-101.5, -94)
+shape = SubResource("RectangleShape2D_ih772")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-101.75, -93.50001)
+rotation = -3.1415925
+scale = Vector2(0.43939385, 0.15765773)
+texture = ExtResource("1_8vsy1")
+region_enabled = true
+region_rect = Rect2(1636, 653, 363, 222)
+
+[node name="killzone" parent="." instance=ExtResource("2_ih772")]
+position = Vector2(-100, -87)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_406cw")

@@ -16,14 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://rckkr16k51ut" path="res://assets/ParallaxCave1.png" id="14_rysoc"]
 [ext_resource type="PackedScene" uid="uid://c4aykkytgpvp7" path="res://scenes/platform.tscn" id="15_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cmtsxp0flnymc" path="res://scenes/powerup.tscn" id="15_ir15t"]
-
-[sub_resource type="Gradient" id="Gradient_ir15t"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ca42v"]
-gradient = SubResource("Gradient_ir15t")
-fill = 1
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
+[ext_resource type="Script" uid="uid://mxnlt3rmek42" path="res://scenes/zoom_trigger.gd" id="17_rysoc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -9000,7 +8993,7 @@ _data = {
 distance = -1004.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5sy4"]
-size = Vector2(4077, 5920)
+size = Vector2(2640, 1035)
 
 [sub_resource type="Animation" id="Animation_ca42v"]
 length = 0.001
@@ -9040,6 +9033,9 @@ _data = {
 &"up": SubResource("Animation_ir15t")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssvqc"]
+size = Vector2(1500, 600)
+
 [node name="game" type="Node2D" unique_id=573774042]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=671612540]
@@ -9065,6 +9061,7 @@ motion_mirroring = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=791873706]
 texture_filter = 1
+scale = Vector2(1, 2.1029413)
 texture = ExtResource("12_ir15t")
 centered = false
 
@@ -9078,25 +9075,25 @@ motion_mirroring = Vector2(320, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1" unique_id=1487218020]
 texture_filter = 1
+scale = Vector2(1, 2.1075368)
 texture = ExtResource("14_rysoc")
 centered = false
 
-[node name="player" parent="." unique_id=1940672146 instance=ExtResource("1_uwrxv")]
+[node name="player" parent="." unique_id=1940672146 groups=["player"] instance=ExtResource("1_uwrxv")]
 position = Vector2(-1, 0)
 
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=371706839]
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=371706839 groups=["camera"]]
 position = Vector2(4, -1)
 offset = Vector2(1, 1)
-zoom = Vector2(1.4, 1.4)
+zoom = Vector2(2, 2)
 limit_left = -10000207
 limit_top = -9999952
 limit_right = 9999793
-limit_bottom = 540
+limit_bottom = 2000
 
 [node name="PointLight2D" type="PointLight2D" parent="player" unique_id=682428419]
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-texture = SubResource("GradientTexture2D_ca42v")
 texture_scale = 3.5
 script = ExtResource("6_ca42v")
 
@@ -9124,7 +9121,7 @@ shape = SubResource("WorldBoundaryShape2D_gee14")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="windy" unique_id=519883159]
-position = Vector2(3857.5, 2964)
+position = Vector2(733, 1272.5)
 shape = SubResource("RectangleShape2D_u5sy4")
 
 [node name="keys" type="Node" parent="." unique_id=1487125544]
@@ -9206,20 +9203,23 @@ position = Vector2(3706, 437)
 [node name="crumble10" parent="crumble_platforms" unique_id=1659630620 instance=ExtResource("9_0tnpc")]
 position = Vector2(3442, 491)
 
+[node name="crumble23" parent="crumble_platforms" unique_id=599953806 instance=ExtResource("9_0tnpc")]
+position = Vector2(5879, 829)
+
 [node name="powerup" parent="." unique_id=218845272 instance=ExtResource("15_ir15t")]
-position = Vector2(2233, 546)
+position = Vector2(2236, 908)
 
 [node name="powerup5" parent="." unique_id=1550580581 instance=ExtResource("15_ir15t")]
 position = Vector2(3256, 612)
 
 [node name="powerup2" parent="." unique_id=1274948125 instance=ExtResource("15_ir15t")]
-position = Vector2(1548, 548)
+position = Vector2(1573, 895)
 
 [node name="powerup3" parent="." unique_id=332467485 instance=ExtResource("15_ir15t")]
-position = Vector2(1228, 545)
+position = Vector2(1251, 907)
 
 [node name="powerup4" parent="." unique_id=2053178352 instance=ExtResource("15_ir15t")]
-position = Vector2(718, 99)
+position = Vector2(751, 248)
 
 [node name="Label" type="Label" parent="." unique_id=462037545]
 offset_left = -106.0
@@ -9228,7 +9228,7 @@ offset_right = 53.0
 offset_bottom = -38.0
 text = "press enter to begin "
 
-[node name="Label2" type="Label" parent="." unique_id=1265511993]
+[node name="Label2" type="Label" parent="." unique_id=1265511993 groups=["camera"]]
 offset_left = -107.0
 offset_top = -38.0
 offset_right = 63.0
@@ -9260,5 +9260,15 @@ autoplay = &"up"
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=781699458]
 color = Color(0, 0, 0, 1)
 
+[node name="ZoomTrigger" type="Area2D" parent="." unique_id=635216908]
+position = Vector2(2960, 453)
+script = ExtResource("17_rysoc")
+zoom_out = Vector2(0.85, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoomTrigger" unique_id=1917250787 groups=["camera"]]
+shape = SubResource("RectangleShape2D_ssvqc")
+
 [connection signal="body_entered" from="windy" to="player" method="_on_windy_body_entered"]
 [connection signal="body_exited" from="windy" to="player" method="_on_windy_body_exited"]
+[connection signal="body_entered" from="ZoomTrigger" to="ZoomTrigger" method="_on_body_entered"]
+[connection signal="body_exited" from="ZoomTrigger" to="ZoomTrigger" method="_on_body_exited"]

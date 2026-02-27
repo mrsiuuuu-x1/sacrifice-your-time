@@ -1,6 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://dyv14dljisoet"]
+[gd_scene format=3 uid="uid://dyv14dljisoet"]
 
-[ext_resource type="Script" uid="uid://de4nc6dxi7lf5" path="res://key.gd" id="1_wy8tx"]
+[ext_resource type="Script" uid="uid://de4nc6dxi7lf5" path="res://scripts/key.gd" id="1_wy8tx"]
 [ext_resource type="Texture2D" uid="uid://bejswsbl2263h" path="res://assets/free_rotating_key_frakassets/free_rotating_key_frakassets/key_32x32_24f.png" id="2_brs3p"]
 [ext_resource type="AudioStream" uid="uid://bpupxf5kksyri" path="res://assets/free_rotating_key_frakassets/free_rotating_key_frakassets/key-404884.mp3" id="3_jcln5"]
 

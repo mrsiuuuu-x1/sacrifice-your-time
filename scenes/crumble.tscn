@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://o6arxya4pj1s"]
+[gd_scene format=3 uid="uid://o6arxya4pj1s"]
 
-[ext_resource type="Script" uid="uid://dsav6t3ytulnh" path="res://crumble.gd" id="1_3e71j"]
+[ext_resource type="Script" uid="uid://dsav6t3ytulnh" path="res://scripts/crumble.gd" id="1_3e71j"]
 [ext_resource type="Texture2D" uid="uid://dvmrk6nj67x5l" path="res://assets/Cave - Floor.png" id="2_6foy7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq4jw"]
